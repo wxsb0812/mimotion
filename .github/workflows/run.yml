@@ -1,30 +1,30 @@
-name: 刷步数
+name   名字。: 刷步数
 
 on:
   schedule:
-    - cron: '21 0,1,2,3,4,5 * * *'
+    - cron: '20 0,1,2,3,4,5 * * *'
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest   上运行:ubuntu-latest
     timeout-minutes: 60
     steps:
-      - name: Checkout codes
-        uses: actions/checkout@v3
-      - name: Update system and install zsh
+      - name   名字。: Checkout codes   —name:签出码
+        uses: actions/checkout@v3用途:行动/ checkout@v3
+      - name   名字。: Update system and install zsh—name:更新system，安装zsh
         run: |
           sudo -E apt-get -qq update
           sudo -E apt-get install zsh -y
           
-      - name: 初始化Python
-        uses: actions/setup-python@v3
+      - name   名字。: 初始化Python
+        uses   使用: actions/setup-python@v3
         with:
           python-version: 3.8
           
-      - name: 开始
+      - name   名字。: 开始
         env:
             CONFIG: ${{ secrets.CONFIG }}
-        run: |
+        run   运行: |
           pip3 install requests pytz
           python3 main.py
